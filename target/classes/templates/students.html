@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Students</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+         .container{
+            padding:12px;
+
+         }
+        .row{
+            margin:10px 2px 0px;
+
+        }
+        body{
+            color:white;
+            background-color: #2b4162;
+            background-image:  linear-gradient(315deg, #2b4162 0%, #12100e 74%);
+            background-repeat: no-repeat;
+            height : 100vh;
+        }
+        h1{
+        text-align:center;
+        margin-top:25px;
+        }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Data</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students}">Home</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="text-center">
+    <h1 class="title">List of Students</h1>
+</div>
+
+    <div class="container">
+
+        <div class="row">
+            <a th:href = "@{/students/new}" class="btn btn-light" >Add Student</a>
+
+        </div>
+        <br>
+            <table class="table table-striped table-dark">
+                <thead class="table-dark">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th class="w-auto">Update</th>
+                        <th class="w-auto">Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
+                    <tr th:each = "student: ${students}">
+                        <td th:text = "${student.firstName}"></td>
+                        <td th:text = "${student.lastName}"></td>
+                        <td th:text = "${student.email}"></td>
+
+
+                        <td>
+                            <a th:href = "@{/students/edit/{id} (id=${student.id})}" class="btn btn-primary">Edit</a>
+                        </td>
+                        <td>
+                            <a th:href = "@{/students/{id} (id=${student.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+    </div>
+</body>
+</html>
