@@ -26,12 +26,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student saveStudent(Student student){
-        Address address = new Address();
-        address.setStreet(student.getAddress().getStreet());
-        address.setPostal_code(student.getAddress().getPostal_code());
-        address.setCity(student.getAddress().getCity());
-        address.setState(student.getAddress().getState());
-        addressRespository.save(address);
+        Address add = new Address();
+        add = student.getAddress();
+        add.setWholeAddress();
+        student.setAddress(add);
         return studentRepository.save(student);
     }
 

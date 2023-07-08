@@ -17,8 +17,10 @@ public class Student {
     @Column(name = "email", nullable = false)
     private String email;
 
+//    @OneToOne(cascade = CascadeType.ALL,   fetch = FetchType.EAGER)
+//    @JoinColumn(name = "address_id", referencedColumnName = "add_id")
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "add_id")
+    @JoinColumn(name = "address_id")
     private Address address;
 
     public Address getAddress() {

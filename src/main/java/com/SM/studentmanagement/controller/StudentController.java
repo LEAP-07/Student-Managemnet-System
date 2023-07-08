@@ -3,6 +3,7 @@ package com.SM.studentmanagement.controller;
 import com.SM.studentmanagement.entity.Address;
 import com.SM.studentmanagement.entity.Student;
 import com.SM.studentmanagement.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class StudentController {
+    @Autowired
     private StudentService studentService;
 
     public StudentController(StudentService studentService) {
@@ -37,6 +39,12 @@ public class StudentController {
     @PostMapping("/students")
     public String saveStudent(@ModelAttribute("student") Student student){
         studentService.saveStudent(student);
+        Address add = new Address();
+        add.setStreet( student.getAddress().getStreet() );
+
+        for(int i=0 ; i<100 ; i++){
+            System.out.println(add.getStreet());
+        }
 
         return "redirect:/students";
     }

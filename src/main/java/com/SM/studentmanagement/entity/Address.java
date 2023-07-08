@@ -9,6 +9,8 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long add_id;
 
+
+    private String wholeAddress;
     @Column
     private String street;
 
@@ -59,5 +61,13 @@ public class Address {
 
     public void setState(String state) {
         this.state = state;
+    }
+    public String getWholeAddress(){
+        return wholeAddress;
+    }
+    public String setWholeAddress(){
+
+        wholeAddress = String.format("%s, %s %s, %s",street,city,state,Integer.toString(postal_code));
+        return wholeAddress;
     }
 }

@@ -77,7 +77,11 @@
                         <td th:text = "${student.lastName}"></td>
                         <td th:text = "${student.email}"></td>
 
-<!--                        <td th:text = "${student.address}"></td>-->
+                        <td>
+                            <div th:text="${student.address.wholeAddress}"></div>
+                        </td>
+
+
 
                         <td>
                             <a th:href = "@{/students/edit/{id} (id=${student.id})}" class="btn btn-primary">Edit</a>
