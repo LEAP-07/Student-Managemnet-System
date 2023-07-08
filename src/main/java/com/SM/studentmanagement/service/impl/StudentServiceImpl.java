@@ -1,6 +1,8 @@
 package com.SM.studentmanagement.service.impl;
 import java.util.List;
 
+import com.SM.studentmanagement.entity.Address;
+import com.SM.studentmanagement.repository.AddressRespository;
 import com.SM.studentmanagement.repository.StudentRepository;
 import com.SM.studentmanagement.service.StudentService;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,7 @@ public class StudentServiceImpl implements StudentService {
 
 
     private StudentRepository studentRepository;
-
+    private AddressRespository addressRespository;
     public StudentServiceImpl(StudentRepository studentRepository) {
         super();
         this.studentRepository = studentRepository;
@@ -24,6 +26,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student saveStudent(Student student){
+        Address address = new Address();
+        address.setStreet(student.getAddress().getStreet());
+        address.setPostal_code(student.getAddress().getPostal_code());
+        address.setCity(student.getAddress().getCity());
+        address.setState(student.getAddress().getState());
+        addressRespository.save(address);
         return studentRepository.save(student);
     }
 

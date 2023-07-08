@@ -9,14 +9,33 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long add_id;
 
-    @Column(name="city")
+    @Column
+    private String street;
+
+    @Column
+    private int postal_code;
+
+    @Column
     private String city;
 
     @Column(name="state")
     private String state;
 
-    @Column(name="house_no")
-    private String h_no;
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public int getPostal_code() {
+        return postal_code;
+    }
+
+    public void setPostal_code(int postal_code) {
+        this.postal_code = postal_code;
+    }
 
     public Long getAdd_id() {
         return add_id;
@@ -40,13 +59,5 @@ public class Address {
 
     public void setState(String state) {
         this.state = state;
-    }
-
-    public String getH_no() {
-        return h_no;
-    }
-
-    public void setH_no(String h_no) {
-        this.h_no = h_no;
     }
 }

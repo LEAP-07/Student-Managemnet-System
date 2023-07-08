@@ -1,5 +1,6 @@
 package com.SM.studentmanagement.controller;
 
+import com.SM.studentmanagement.entity.Address;
 import com.SM.studentmanagement.entity.Student;
 import com.SM.studentmanagement.service.StudentService;
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,7 @@ public class StudentController {
     @PostMapping("/students")
     public String saveStudent(@ModelAttribute("student") Student student){
         studentService.saveStudent(student);
+
         return "redirect:/students";
     }
 

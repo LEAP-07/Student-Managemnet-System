@@ -66,7 +66,8 @@
     <div class = "justify-content-center card mx-auto">
         <h3 class = "text-center">Create New Student</h3>
         <div class="card-body">
-            <form th:action="@{/students}" th:object="${student}" method="POST">
+            <form th:action="@{/students}" th:object="${student} && ${address}" method="POST">
+<!--                <form th:action="@{/students}" th:object="${student} && ${address}" method="POST">-->
                 <div class="form-group">
                     <label>First Name</label>
                     <input class="form-control" type="text" onsubmit="return validateForm()" name = "firstName" th:field="*{firstName}" placeholder="Enter the First Name" required/>
@@ -91,6 +92,17 @@
                         Incomplete
                     </div>
                 </div>
+
+                <div th:object="${student.address}">
+
+                    <label for="street">Street:</label>
+                    <input type="text" id="street" name="address.street" th:field=A"*{address.street}"><br><br>
+
+                </div>
+<!--                <label for="city">City:</label>-->
+<!--                <input type="text" id="city" name="address.city" th:field="*{address.city}"><br><br>-->
+
+
 
 
 
